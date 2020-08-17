@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkedin Autofollow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg==" crossorigin="anonymous" />
+</head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+    }
+    .container{
+        text-align: center;
+    }
+    h1{
+        margin-top: 30px;
+        color: #ffffff;
+    }
+    p{
+        font-size: 20px;
+        color: #bbbbbb;
+    }
+    span{
+        background-color: rgba(255, 255, 255, 0.15);
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+    #warning{
+        color: red;
+        background-color: #000000;
+    }
+    button{
+        padding: 10px;
+        border: none;
+        background-color: rgba(229, 143, 143, 0.85);
+        color: #000000;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+    .note{
+        background-color: #222222;
+        margin: 0 300px;
+        padding: 30px;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Step 0</h1> 
+        <p>Works on desktop only. Make sure you open this page on Desktop only.</p>
+
+        
+
+        <h1>Step 1</h1>
+        <p>Click to copy the magic script Which will be used in step 4</p>
+        <button onclick="myFunction()">Copy Magic Script</button>
+        <textarea name="" id="myInput" cols="30" rows="10">
+            var skipCoder = false;
+            var skipCoderCount = 0;
+            var lastOne = "";
+            function connectCoders(){
+                window.scrollTo(0,document.body.scrollHeight);
+                var coders = document.getElementsByClassName('search-result__actions--primary');
+                var found = false;
+                var countSkipFew = 0;
+                for (var i =0; i<coders.length; i++){
+                    if(coders[i].innerText===("Connect")){
+                        if( skipCoder && countSkipFew < skipCoderCount){
+                            countSkipFew++;
+                            continue;
+                        }
+                        coders[i].click();
+
+                        found = true;
+                        try{
+                            if(lastOne===coders[i].getAttribute("aria-label").split(". ")[0]){
+                                window.scrollTo(0,document.body.scrollHeight);
+                                document.querySelector('[aria-label="Next"]').click();
+                                skipCoder = false;
+                                skipCoderCount = 0;
+                                return;
+                            }
+
+                            lastOne = coders[i].getAttribute("aria-label").split(". ")[0];
+                            console.log(lastOne);
+
+                        }catch(err){}
+                        break;
+                    }
+                }
+
+    
+    
+                if(found){
+                try{
+                    if(!!document.querySelector('label[for="email"]')){
+                        skipCoder = true;
+                        skipCoderCount++;
+                    }
+
+            
+                    var buttons = document.getElementsByClassName('artdeco-button__text');
+                    for (var i=0 ; i<buttons.length; i++){
+                
+                        if(buttons[i].innerText===("Send now")||buttons[i].innerText===("Done")){
+                    
+                            buttons[i].click();
+                    
+                            console.log("Request sent");
+                        }
+                    }
+                }catch(err){
+                }
+            }
+   
+            else{
+		        if(!!document.querySelector('[data-test="no-results-cta"]')){
+            
+                    document.querySelector('[data-test="no-results-cta"]').click();
+                }else{
+            
+            
+                    window.scrollTo(0,document.body.scrollHeight);
+                    document.querySelector('[aria-label="Next"]').click();
+                    skipCoder = false;
+                    skipCoderCount = 0;
+                }
+            }
+        }
+
+        setInterval(connectCoders,3000);
+
+        </textarea>
+
+        <h1>Step 2</h1>
+        <p>Click the button below to open linkedin, <span id="warning">Dont forget to read other steps</span></p>
+        <a href="https://www.linkedin.com/search/results/all/?keywords=cet&origin=SWITCH_SEARCH_VERTICAL"><button>Open LinkedIn</button></a>
+        
+        <div class="note">
+            <h2>Note</h2>
+        <p>This linkedin link will connect you to Coders of CET. If you want to connect to others, just go to linkedin and search for a institution and follow the step</p>
+        </div>
+        
+
+        <h1>Step 3</h1>
+        <p>Press &nbsp; <span>Ctr + Shift + J</span> &nbsp; to open console.</p>
+
+        <h1>Step 4</h1>
+        <p>Paste magic script you copied in the console</p>
+    </div>
+
+    <script>
+        function myFunction() {
+          var copyText = document.getElementById("myInput");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+        }
+    </script>
+</body>
+</html>
+
+        
+
+
